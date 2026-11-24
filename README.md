@@ -1,18 +1,16 @@
 # Motion Studio
 
-**Make motion matter.** Two experiments in camera-based interaction, with one hand-tracking engine.
+**Make motion matter.** A camera-powered playground for natural human-computer interaction.
 
-## Motion Symphony
+## 01 / Motion Symphony
 
-Conduct a pentatonic synthesizer with your hands. A right hand selects notes and expression, a left hand shapes tempo and visual color, and a pinch adds a bell accent. Enable sound explicitly. Drag the canvas to perform without a camera.
+Conduct an original eight-bar score performed by four synthesized sections: strings, woodwinds, brass and percussion. Raise hands for louder expression, spread both hands to bring in sections, move your right hand up and down rhythmically to influence tempo, hold a fist to pause and open a hand to resume. The concert hall illuminates playing sections. With no webcam, use the sliders and pointer. Enable sound to hear the arrangement. Instruments are synthesized approximations, not recordings of a live orchestra.
 
-## Gesture Command Studio
+## 02 / Gesture Command Studio
 
-Assign open hand, peace sign, fist, pointing, or pinch to a website. Arm recognition and hold a gesture to prepare the action, then confirm the link. Try gestures using buttons without a camera. No system commands or automatic pop-ups.
+Visual gesture cards show exactly how to position your fingers. Enable camera, arm recognition, hold a gesture for 0.85 seconds and watch the live highlight and progress indicator. Confirm the proposed website to open it. Edit mappings or try them manually without a camera. No automatic system commands.
 
-## Run
-
-Node.js 18+; no npm dependencies.
+## Quickstart
 
 ```sh
 git clone https://github.com/zhen01/Motion-Studio.git
@@ -20,10 +18,8 @@ cd Motion-Studio
 npm start
 ```
 
-Open http://localhost:4320, enable camera and grant browser permission. First load requires internet for MediaPipe SDK and model. Frames are processed locally; the app does not upload camera imagery. Escape stops sound and camera. Camera accuracy varies with lighting and hand orientation; use the preview to see detection. If camera access fails, use pointer mode. Browser-based audio is synthesized, not recorded music.
+Open http://localhost:4320. Node.js 18+; camera mode needs internet to load MediaPipe. Frames are processed locally, not uploaded by this app. Press Escape to stop camera and sound. Hardware tracking and audio require testing on your device.
 
-## Technical stack
+## Stack
 
-MediaPipe Hand Landmarker, Web Audio API, Canvas 2D, native JavaScript, Node HTTP. Gesture detection uses normalized hand landmark distances, a dwell gate, and a release-to-rearm mechanism. Custom URL mappings persist in browser storage.
-
-Run `npm test` for the pure logic tests. Actual webcam/audio behavior requires a browser with hardware access and network access to the model assets.
+MediaPipe Hand Landmarker, Web Audio API, Canvas 2D, native JavaScript and Node.js. Run `npm test` to verify gesture gating, URL validation and musical arrangement logic.
