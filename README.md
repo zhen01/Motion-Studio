@@ -1,6 +1,10 @@
 # Motion Studio
 
-**Make motion matter.** A camera-powered playground for natural human-computer interaction.
+**What if I could conduct an orchestra from my desk?**
+
+I built this mostly for fun. I wondered what it would feel like to shape the sound of an orchestra with just my hands, and whether a webcam could make that possible from my desk.
+
+That idea became Motion Studio, a small experiment in conducting synthesized music with gestures, and exploring what else a computer can understand from movement. It is a work in progress.
 
 ## 01 / Motion Symphony
 
