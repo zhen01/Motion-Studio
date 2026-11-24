@@ -1,0 +1,5 @@
+const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+export function classify(p){if(!p||p.length!==21)return 'none';const wrist=p[0],scale=Math.max(.01,dist(wrist,p[9]));const fingers=[8,12,16,20].map(i=>dist(p[i],wrist)>dist(p[i-2],wrist)*1.16);if(dist(p[4],p[8])/scale<.29)return 'pinch';if(fingers.every(Boolean))return 'open';if(fingers[0]&&fingers[1]&&!fingers[2]&&!fingers[3])return 'peace';if(fingers.every(x=>!x))return 'fist';if(fingers[0]&&!fingers[1]&&!fingers[2]&&!fingers[3])return 'point';return 'none'}
+export function safeURL(s){try{const u=new URL(s);return ['https:','http:'].includes(u.protocol)&&!u.username&&!u.password?u.href:null}catch{return null}}
+export function gate(state,gesture,now,hold=850){if(gesture!==state.gesture)return {gesture,since:now,fired:false,trigger:false};if(gesture==='none'||state.fired||now-state.since<hold)return {...state,trigger:false};return {...state,fired:true,trigger:true}}
+export function musicalNote(x){const scale=[0,2,4,7,9,12,14,16];return 60+scale[Math.min(7,Math.max(0,Math.floor(x*8)))];}

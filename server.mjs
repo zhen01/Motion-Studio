@@ -1,0 +1,3 @@
+import http from 'node:http';import {readFile} from 'node:fs/promises';import {fileURLToPath} from 'node:url';
+const files={'/':['index.html','text/html'],'/app.js':['app.js','text/javascript'],'/gesture.js':['gesture.js','text/javascript'],'/style.css':['style.css','text/css']};
+http.createServer(async(req,res)=>{const f=files[req.url];if(req.method!=='GET'||!f){res.writeHead(404);return res.end()}try{res.setHeader('Content-Type',f[1]);res.end(await readFile(new URL(f[0],import.meta.url)))}catch{res.writeHead(500);res.end()}}).listen(Number(process.env.PORT||4320),'127.0.0.1',()=>console.log('Motion Studio: http://127.0.0.1:'+(process.env.PORT||4320)));
